@@ -1,0 +1,5 @@
+-neko test.n
+-main Test
+-cp test
+-lib bodge-flare
+

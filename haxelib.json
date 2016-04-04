@@ -1,0 +1,13 @@
+{
+    "name"         :  "bodge-flare",
+    "url"          :  "",
+    "license"      :  "BSD",
+    "tags"         :  ["neko"],
+    "description"  :  "A rudimentary POSIX signal handler",
+    "version"      :  "0.0.0-alpha",
+    "classPath"    :  "lib",
+    "releasenote"  :  "Initial work",
+    "contributors" :  ["jonasmalacofilho"],
+    "dependencies" :  {}
+}
+
