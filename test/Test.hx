@@ -1,7 +1,7 @@
 class Test {
 	static function main()
 	{
-		bodge.Flare.register(function (num) throw num);
+		bodge.Flare.register(function (num) throw num.toString());
 		try {
 			new neko.vm.Lock().wait();
 		} catch (e:Dynamic) {
