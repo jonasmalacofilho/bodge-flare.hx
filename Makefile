@@ -3,7 +3,7 @@ test: _PHONY
 	neko test.n
 
 ndll/Linux64/flare.ndll: src/flare.c
-	gcc src/flare.c -shared -o ndll/Linux64/flare.ndll -fPIC
+	$(CC) $(CFLAGS) src/flare.c -shared -o ndll/Linux64/flare.ndll -fPIC
 
 clean: _PHONY
 	rm ndll/*/flare.ndll

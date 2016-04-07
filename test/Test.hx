@@ -1,13 +1,38 @@
+import bodge.Flare;
+
+class UnpauseException {
+	var signal:SignalNumber;
+
+	public function toString()
+		return 'UnpauseException($signal)';
+
+	public function new(signal)
+		this.signal = signal;
+}
+
 class Test {
-	static function main()
+	static function pause()
 	{
-		bodge.Flare.register(function (num) throw num.toString());
+		trace("Pausing...");
 		try {
 			new neko.vm.Lock().wait();
-		} catch (e:Dynamic) {
-			trace('Aborting infinite pause due to exception: $e');
+		} catch (e:UnpauseException) {
+			trace('Aborting infinite pause with $e');
 		}
-		trace('Bye');
+	}
+
+	static function main()
+	{
+		trace("Ignoring SIGINT (keyboard interrupt)");
+		Flare.ignore(SIGINT);
+
+		trace("Setting SIGUSR1 to unpause");
+		Flare.notify(SIGUSR1, function (num) throw new UnpauseException(num));
+		pause();
+
+		trace("Restoring SIGINT default behavior");
+		Flare.restore(SIGINT);
+		pause();
 	}
 }
 
