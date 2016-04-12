@@ -10,7 +10,6 @@ static value *cback;
 static void gen_handler(int signum)
 {
 	if (cback == NULL) return;
-	printf("Received signal %d\n", signum);
 	val_call1(*cback, alloc_int(signum));
 }
 

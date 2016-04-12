@@ -56,7 +56,6 @@ class Flare {
 
 	static function genericHandler(flare)
 	{
-		trace(flare);
 		var handler = registry[flare];
 		if (handler == null) return;
 		handler(flare);
